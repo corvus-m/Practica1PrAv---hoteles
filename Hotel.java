@@ -9,17 +9,17 @@ import java.util.Vector;
  *
  */
 public class Hotel {				//es o no es como trivago
-	private String nombre;
-	private int estrellas;			//resulta que no existe unsigned
-	private String direccion;
-	private int num_habit;
+	protected String nombre;
+	protected int estrellas;			//resulta que no existe unsigned
+	protected String direccion;
+	protected int num_habit;
 
-	private Boolean piscina;
-	private Boolean pista_tennis;
-	private Boolean restaurante;
-	private Boolean bar;
+	protected Boolean piscina;
+	protected Boolean pista_tennis;
+	protected Boolean restaurante;
+	protected Boolean bar;
 
-	private Vector<Habitacion> habitaciones;
+	protected Vector<Habitacion> habitaciones;
 
 
 
@@ -116,7 +116,9 @@ public class Hotel {				//es o no es como trivago
 	public void setHabitaciones(Vector<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
 	}
-
+	public void addHabitacion(Habitacion nueva) {
+		this.habitaciones.add(nueva);
+	}
 
 
 
@@ -127,7 +129,7 @@ public class Hotel {				//es o no es como trivago
 
 
 
-	private void caracteristicas_Hotel() {
+	public void caracteristicas_Hotel() {
 
 		System.out.println("Estrellas: " + this.getEstrellas());
 		System.out.println("Direccion: " + this.getDireccion());
@@ -146,7 +148,7 @@ public class Hotel {				//es o no es como trivago
 			elem.muestra_habitacion(dias);
 	}
 
-	public void filtra_Hotel(int personas, int precio, int dias) {
+	public int filtra_Hotel(int personas, int precio, int dias) {
 
 		Vector<Habitacion> aux = new Vector<Habitacion>();
 		int cont=0;
@@ -163,10 +165,10 @@ public class Hotel {				//es o no es como trivago
 			for(Habitacion elem: aux)
 				elem.muestra_habitacion(dias);
 		}
-
+		return cont;
 	}
 
-	public void filtra_Hotel( int personas, int precio, int dias, int descuento) {
+	public int filtra_Hotel( int personas, int precio, int dias, int descuento) {
 		Vector<Habitacion> aux = new Vector<Habitacion>();
 		int cont=0;
 		for(Habitacion elem: this.getHabitaciones())
@@ -182,7 +184,7 @@ public class Hotel {				//es o no es como trivago
 			for(Habitacion elem: aux)
 				elem.muestra_habitacion(dias, descuento);
 		}
-
+		return cont;
 	}
 
 
@@ -203,6 +205,14 @@ public class Hotel {				//es o no es como trivago
 		this.setNum_habit(this.getNum_habit()+1);
 	}
 
+	public void anade_hab_suite(String nombre, int camitas, int camotas, int vistas) {
+
+		Suite nueva = new Suite(nombre, camitas, camotas, this.getEstrellas(), vistas);
+
+		this.habitaciones.addElement(nueva);
+
+		this.setNum_habit(this.getNum_habit()+1);
+	}
 
 
 	//vector de hoteles con sus vectores de habitaciones

@@ -1,5 +1,6 @@
 package triLazy;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import java.time.temporal.ChronoUnit;
@@ -7,15 +8,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 import java.util.Vector;
 
+
 public class Principal {
 
-
-
-
-
-
-
-
+//funciones 
+	
 	static int diasEstancia(String fecha1, String fecha2) {   //pues calcular los dias
 
 		LocalDate inicio = LocalDate.parse(fecha1);
@@ -39,7 +36,7 @@ public class Principal {
 
 
 
-	static int hayOferta(int personas, int estancia, int antelacion, Scanner sc) {		//comprueba si entra en oferta de familia, por reserva con antelacion y por dias de estancia
+	static int hayOferta(String idioma, int personas, int estancia, int antelacion, Scanner sc) throws IOException {		//comprueba si entra en oferta de familia, por reserva con antelacion y por dias de estancia
 
 		int descuento=0;
 		char c;
@@ -47,7 +44,9 @@ public class Principal {
 
 
 		if (personas>4) {
-			System.out.print("Son familia numerosa?s/n");
+			
+			String texto = "Son familia numerosa? s (si) /n (no): ";
+			System.out.print(Translator.translate("es", idioma, texto));
 			do {
 				c = sc.next().charAt(0);
 			}while(c!='s'&& c!='n');
@@ -69,12 +68,14 @@ public class Principal {
 
 
 
+	//programa principal
 
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
-		char opcion;
-		int personas, oferta, presupuesto;
+		
+
+		String idioma; //0 = cliente, 1 = empresa/hotel (agrega hoteles), 2 = moderador; 
+		int personas, presupuesto;
 		Vector<Hotel> hoteles= new Vector<Hotel>();
 		
 		//Hoteles para ejemplificar
@@ -120,13 +121,131 @@ public class Principal {
 		String fecha2;
 
 
-		System.out.print("Bienvenido usuario, dinos lo que buscas y encontraremos para ti el hotel ideal\n\n¿Que fechas tienes pensado quedarte?"
-				+ " aaaa-mm-dd\nDesde:");	//cambiar formato de entrada a dd-mm-aaaa
+		
+		
+		System.out.println("Welcome user, select your prefered language. example: 'en' for english"
+				+ "\n\nSupported languages:\r\n\n"
+				+ "“auto”:””Automatic”, \r\n"
+				+ "“af”:”Afrikaans”, \r\n"
+				+ "“sq”:”Albanian”, \r\n"
+				+ "“ar”:”Arabic”, \r\n"
+				+ "“hy”:”Armenian”, \r\n"
+				+ "“az”:”Azerbaijani”, \r\n"
+				+ "“eu”:”Basque”, \r\n"
+				+ "“be”:”Belarusian”, \r\n"
+				+ "“bn”:”Bengali”, \r\n"
+				+ "“bs”:”Bosnian”, \r\n"
+				+ "“bg”:”Bulgarian”, \r\n"
+				+ "“ca”:”Catalan”, \r\n"
+				+ "“ceb”:”Cebuano”, \r\n"
+				+ "“ny”:”Chichewa”, \r\n"
+				+ "“zh-cn”:”Chinese Simplified”, \r\n"
+				+ "“zh-tw”:”Chinese Traditional”, \r\n"
+				+ "“co”:”Corsican”, \r\n"
+				+ "“hr”:”Croatian”, \r\n"
+				+ "“cs”:”Czech”, \r\n"
+				+ "“da”:”Danish”, \r\n"
+				+ "“nl”:”Dutch”, \r\n"
+				+ "“en”:”English”, \r\n"
+				+ "“eo”:”Esperanto”, \r\n"
+				+ "“et”:”Estonian”, \r\n"
+				+ "“tl”:”Filipino”, \r\n"
+				+ "“fi”:”Finnish”, \r\n"
+				+ "“fr”:”French”, \r\n"
+				+ "“fy”:”Frisian”, \r\n"
+				+ "“gl”:”Galician”, \r\n"
+				+ "“ka”:”Georgian”, \r\n"
+				+ "“de”:”German”, \r\n"
+				+ "“el”:”Greek”, \r\n"
+				+ "“gu”:”Gujarati”, \r\n"
+				+ "“ht”:”Haitian Creole”, \r\n"
+				+ "“ha”:”Hausa”, \r\n"
+				+ "“haw”:”Hawaiian”, \r\n"
+				+ "“iw”:”Hebrew”, \r\n"
+				+ "“hi”:”Hindi”, \r\n"
+				+ "“hmn”:”Hmong”, \r\n"
+				+ "“hu”:”Hungarian”, \r\n"
+				+ "“is”:”Icelandic”, \r\n"
+				+ "“ig”:”Igbo”, \r\n"
+				+ "“id”:”Indonesian”, \r\n"
+				+ "“ga”:”Irish”, \r\n"
+				+ "“it”:”Italian”, \r\n"
+				+ "“ja”:”Japanese”, \r\n"
+				+ "“jw”:”Javanese”, \r\n"
+				+ "“kn”:”Kannada”, \r\n"
+				+ "“kk”:”Kazakh”, \r\n"
+				+ "“km”:”Khmer”, \r\n"
+				+ "“ko”:”Korean”, \r\n"
+				+ "“ku”:”Kurdish (Kurmanji)”, \r\n"
+				+ "“ky”:”Kyrgyz”, \r\n"
+				+ "“lo”:”Lao”, \r\n"
+				+ "“la”:”Latin”, \r\n"
+				+ "“lv”:”Latvian”, \r\n"
+				+ "“lt”:”Lithuanian”, \r\n"
+				+ "“lb”:”Luxembourgish”, \r\n"
+				+ "“mk”:”Macedonian”, \r\n"
+				+ "“mg”:”Malagasy”, \r\n"
+				+ "“ms”:”Malay”, \r\n"
+				+ "“ml”:”Malayalam”, \r\n"
+				+ "“mt”:”Maltese”, \r\n"
+				+ "“mi”:”Maori”, \r\n"
+				+ "“mr”:”Marathi”, \r\n"
+				+ "“mn”:”Mongolian”, \r\n"
+				+ "“my”:”Myanmar (Burmese)”, \r\n"
+				+ "“ne”:”Nepali”, \r\n"
+				+ "“no”:”Norwegian”, \r\n"
+				+ "“ps”:”Pashto”, \r\n"
+				+ "“fa”:”Persian”, \r\n"
+				+ "“pl”:”Polish”, \r\n"
+				+ "“pt”:”Portuguese”, \r\n"
+				+ "“ma”:”Punjabi”, \r\n"
+				+ "“ro”:”Romanian”, \r\n"
+				+ "“ru”:”Russian”, \r\n"
+				+ "“sm”:”Samoan”, \r\n"
+				+ "“gd”:”Scots Gaelic”, \r\n"
+				+ "“sr”:”Serbian”, \r\n"
+				+ "“st”:”Sesotho”, \r\n"
+				+ "“sn”:”Shona”, \r\n"
+				+ "“sd”:”Sindhi”, \r\n"
+				+ "“si”:”Sinhala”, \r\n"
+				+ "“sk”:”Slovak”, \r\n"
+				+ "“sl”:”Slovenian”, \r\n"
+				+ "“so”:”Somali”, \r\n"
+				+ "“es”:”Spanish”, \r\n"
+				+ "“su”:”Sudanese”, \r\n"
+				+ "“sw”:”Swahili”, \r\n"
+				+ "“sv”:”Swedish”, \r\n"
+				+ "“tg”:”Tajik”, \r\n"
+				+ "“ta”:”Tamil”, \r\n"
+				+ "“te”:”Telugu”, \r\n"
+				+ "“th”:”Thai”, \r\n"
+				+ "“tr”:”Turkish”, \r\n"
+				+ "“uk”:”Ukrainian”, \r\n"
+				+ "“ur”:”Urdu”, \r\n"
+				+ "“uz”:”Uzbek”, \r\n"
+				+ "“vi”:”Vietnamese”, \r\n"
+				+ "“cy”:”Welsh”, \r\n"
+				+ "“xh”:”Xhosa”, \r\n"
+				+ "“yi”:”Yiddish”, \r\n"
+				+ "“yo”:”Yoruba”, \r\n"
+				+ "“zu”:”Zulu” "
+				+ "\n\nOption:");
+		
+		
+		idioma = sc.next();
 
+		
+		//CASO ESPANOL
+		if (idioma.equals("es")) {
+
+
+	        System.out.print("Dinos lo que buscas y encontraremos para ti el hotel ideal\\n\\n¿Que fechas tienes pensado quedarte? aaaa-mm-dd\nDesde:"); //cambiar formato de entrada a dd-mm-aaaa
+	        sc.nextLine();
 		fecha1 = sc.nextLine();
 
 		System.out.print("Hasta:");
 
+		
 		fecha2 = sc.nextLine();
 
 
@@ -144,7 +263,7 @@ public class Principal {
 		}while( personas<=0);
 
 
-		int descuento = hayOferta( personas,  estancia,  antelacion, sc);
+		int descuento = hayOferta(idioma, personas,  estancia,  antelacion, sc);
 
 
 
@@ -160,8 +279,9 @@ do {
 	
 
 
-System.out.print("Descuento: " + descuento);
-
+System.out.print("Descuento: " );
+	if(descuento > 10) System.out.println(descuento-1);
+	else System.out.println(descuento);
 
 		if(car=='p'){
 			System.out.print("\n¿Con que presupuesto quieres buscar? introduce el valor a continuacion:");
@@ -193,14 +313,137 @@ System.out.print("Descuento: " + descuento);
 
 			for(Hotel elem: hoteles)
 				elem.muestra_Hotel(estancia);
+	
+		}
+
+		}//end caso de espanol
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//DEMAS CASOS
+		
+		else {
+			
+		       String texto = "Dinos lo que buscas y encontraremos para ti el hotel ideal";
+		       
+		        System.out.println(Translator.translate("es", idioma, texto));
+		        
+		        texto = "¿Que fechas tienes pensado quedarte? aaaa-mm-dd";
+		        System.out.println(Translator.translate("es", idioma, texto));
+		        
+		        texto ="Desde:";
+		        System.out.print(Translator.translate("es", idioma, texto));
+
+		        
+		        
+		        
+			fecha1 = sc.next();
+			 System.out.println();
+			texto ="Hasta:";
+			System.out.print(Translator.translate("es", idioma, texto));
+			sc.nextLine();
+			fecha2 = sc.nextLine();
+
+
+
+
+			int estancia = diasEstancia(fecha1, fecha2);
+			texto = "Dias estancia:" ;
+			System.out.print(Translator.translate("es", idioma, texto));
+			System.out.print(estancia + "\n");
+
+			int antelacion = conAntelacion(fecha1);
+			texto = "Dias antelacion:" ;
+			System.out.print(Translator.translate("es", idioma, texto));
+			
+			System.out.print(antelacion + "\n");
+			
+			texto = "¿Para cuantas personas es la reserva?";
+			System.out.println(Translator.translate("es", idioma, texto));
+
+			do {
+				personas = sc.nextInt();
+			}while( personas<=0);
+
+
+			int descuento = hayOferta( idioma, personas,  estancia,  antelacion, sc);
+
+
+
+
+			//Empiezan filtros
+
+			texto = "¿Quieres mirar Todos los Hoteles disponibles o con maximo de Precio? t (todos) / p (precio) :";
+			System.out.println(Translator.translate("es", idioma, texto));
+			char car;	
+	do {
+			 car = sc.next().charAt(0);
+		}while(car!='t'&& car!='p');
+		
+
+	texto = "Descuento: ";
+	System.out.print(Translator.translate("es", idioma, texto));	
+	if(descuento > 10) System.out.println(descuento-1);
+	else System.out.println(descuento);
+
+
+
+			if(car=='p'){
+				texto = "¿Con que presupuesto quieres buscar? introduce el valor a continuacion:";
+				System.out.println(Translator.translate("es", idioma, texto));
+				
+					presupuesto = sc.nextInt();
+				
+				texto = "Presupuesto:";
+				System.out.println(Translator.translate("es", idioma, texto));
+					System.out.println( presupuesto);
+
+
+				if (descuento!=0) {	//caso con descuento
+				//	System.out.println("entra en desc");
+					for(Hotel elem: hoteles) {	System.out.println("Algo");
+						elem.filtra_Hotel(personas, presupuesto, estancia, descuento);  //mirara dentro de cada hotel habitaciones que cumplan x condiciones
+					}
+					
+				}
+				
+				else { //caso sin descuento
+					for(Hotel elem: hoteles){
+						elem.filtra_Hotel(personas, presupuesto, estancia);
+						}
+					}
+					
+
+			}	 //END IF
+
+			
+			
+			else {
+
+				for(Hotel elem: hoteles)
+					elem.muestra_Hotel(estancia);
+		
+			}
+			
+			
+			
+			
+			
 
 			
 		}
-
-
-
-
-
+		
+	
 		sc.close();
 
 	}
@@ -209,70 +452,3 @@ System.out.print("Descuento: " + descuento);
 
 
 
-
-
-//antiguo codigo de re
-
-//System.out.println("Bienvenido usuario, dinos lo que buscas y encontraremos para ti el hotel ideal\n\n¿Que fechas tienes pensado quedarte? Desde, Día:");
-//do {
-//	dia = sc.nextInt();
-//}while( dia<=0||dia>31);
-//
-//System.out.println("Del mes:");
-//do {
-//	mes = sc.nextInt();
-//}while( mes<=0||mes>12);
-//
-//System.out.println("Anio:");
-//do {
-//	anio = sc.nextInt();
-//}while( anio<=2020);
-//
-//System.out.println("Hasta el Día:");
-//do {
-//	dia2 = sc.nextInt();
-//}while( dia2<=0||dia2>31);
-//
-//System.out.println("Del mes:");
-//do {
-//	mes2 = sc.nextInt();
-//}while( mes2<=0||mes2>12);
-//
-//System.out.println("Anio:");
-//do {
-//	anio2 = sc.nextInt();
-//}while( anio2<=2020);
-
-
-//
-//while (sc.hasNext()) {
-//    int i = 0;
-//    fecha1[i] = sc.next();
-
-//
-//
-//
-//
-//
-//int diasEstancia(String[] fecha1, String[] fecha2) {   //pues calcular el dia
-//	
-//	//set(f, value) changes calendar field f to value.
-//	
-//	Calendar cal1= Calendar.getInstance(); //se pone a la fecha actual como inicializacion
-//	Calendar cal2= Calendar.getInstance();
-//	cal1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(fecha1[0]));
-//	cal1.set(Calendar.MONTH, Integer.parseInt(fecha1[1]));
-//	cal1.set(Calendar.YEAR, Integer.parseInt(fecha1[2]));
-//
-//	cal2.set(Calendar.DAY_OF_MONTH, Integer.parseInt(fecha2[0]));
-//	cal2.set(Calendar.MONTH, Integer.parseInt(fecha2[1]));
-//	cal2.set(Calendar.YEAR, Integer.parseInt(fecha2[2]));
-//	
-//}
-
-//    if (!sc.hasNext()) {	//es verdadero mientras sc tenga otro token
-//        sc.close();
-//        break;
-//    }
-//    i++;
-//}

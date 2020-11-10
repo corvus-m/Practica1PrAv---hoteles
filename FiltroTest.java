@@ -11,15 +11,6 @@ class FiltroTest {
 	
 	
 	
-//	public boolean filtra_habitacion(int personas, int presupuesto, int dias) {
-//		
-//		if (this.calcular_precio()*dias > presupuesto)
-//			return false;
-//		else if( distribucion_camas(personas) == false)
-//			return false;
-//		return true;	
-//	}
-//	
 
 
 	

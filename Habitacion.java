@@ -6,12 +6,12 @@ public class Habitacion {
 	
 	//private valoraciones;			//crear con media de usuarios
 	
-	private String nom_habi;
-	private int camas_ind;
-	private int camas_matrimonio;
-	private Boolean pisc_incluida;
-	private Boolean incluye_buffet;
-	private int estrellas_hotel;		//juro que se lo que es una clase hija pero no me he dado cuenta de su utilidad en este programa hasta muy avanzada la practica
+	protected String nom_habi;
+	protected int camas_ind;
+	protected int camas_matrimonio;
+	protected Boolean pisc_incluida;
+	protected Boolean incluye_buffet;
+	protected int estrellas_hotel;		//juro que se lo que es una clase hija pero no me he dado cuenta de su utilidad en este programa hasta muy avanzada la practica
 	
 	
 	
@@ -43,9 +43,9 @@ public class Habitacion {
 	
 	public double calcular_precio() {
 		
-		return (double)(this.getEstrellas_hotel()*4) + (this.getCamas_ind()*(2.0+0.5*this.getEstrellas_hotel())) + (this.getCamas_matrimonio()*(3.0+0.5*this.getEstrellas_hotel()));
+		double aux = (double)(this.getEstrellas_hotel()*4) + (this.getCamas_ind()*(2.0+0.5*this.getEstrellas_hotel())) + (this.getCamas_matrimonio()*(3.0+0.5*this.getEstrellas_hotel()));
 		
-		
+		 return aux;
 		
 	}
 	
@@ -57,11 +57,12 @@ public class Habitacion {
 	}
 	
 	public boolean distribucion_camas(int personas, boolean familia) {	//para que incluya descuento de familia numerosa requiere de almenos 1 cama de matrimonio
-		if (familia) 
-			if ((this.getCamas_matrimonio()>=1) && (this.getCamas_ind() + this.getCamas_matrimonio()*2) >= personas)
+		if (familia && (this.getCamas_matrimonio()>=1)) {
+			
+			if ( (this.getCamas_ind() + this.getCamas_matrimonio()*2) >= personas)
 				return true;
-
-		else if (this.getCamas_ind() + this.getCamas_matrimonio()*2 >= personas)
+		}
+		else if (!familia && ((this.getCamas_ind() + this.getCamas_matrimonio()*2) >= personas))
 			return true;
 		
 		return false;
@@ -94,9 +95,13 @@ public class Habitacion {
 	public void muestra_habitacion(int dias, int descuento) {
 		
 		System.out.println("\n"+ this.nom_habi);
-		System.out.println("\tPrecio: " + (this.calcular_precio()  * (1.0 - descuento / 100)) + " euros" );
+		System.out.println("\tPrecio: " + this.calcular_precio() + " euros" );
+		
+		if (descuento!=0){
 		System.out.println("\tPrecio total sin descuento: " + (this.calcular_precio() * dias) + " euros" );
-		System.out.println("\tPrecio con descuento: " + (this.calcular_precio()  * (1.0 - descuento / 100) * dias) + " euros" );
+		System.out.println("\tPrecio con descuento: " + (this.calcular_precio()  * (1.0 - (float)descuento / 100) * dias) + " euros" );
+		}
+		
 		if(this.camas_ind>0)
 			System.out.println("\tCamas individuales:" + camas_ind);
 		if(this.camas_ind>0)
@@ -118,7 +123,7 @@ public class Habitacion {
 			
 		if (this.calcular_precio()*dias > presupuesto)
 			return false;
-		else if( distribucion_camas(personas) == false)
+		else if( this.distribucion_camas(personas) == false)
 			return false;
 		return true;	
 	}
@@ -132,9 +137,9 @@ public class Habitacion {
 			--descuento;
 		}
 		
-		if (this.calcular_precio()*dias*(1.0-descuento/100) > presupuesto)	//otra forma de calcular el descuento es sacar el valor resultante del total por el porcentaje usado del precio
+		if (this.calcular_precio()*dias*(1.0- (float)descuento/100) > presupuesto)	//otra forma de calcular el descuento es sacar el valor resultante del total por el porcentaje usado del precio
 			return false;
-		else if( distribucion_camas(personas, familia) ==false)
+		else if( this.distribucion_camas(personas, familia) ==false)
 			return false;
 		return true;	
 	}
