@@ -8,10 +8,12 @@ Los distintos test se encargan de comprobar el correcto funcionamiento de las fu
   -Datetest comprueba que las funciones de estancia y reserva de dias funcionan correctamente, dando los dias que hay entre dos fechas.
   -DistributionTest mira que la función distribución de personas, filtra correctamente las habitaciones disponibles para X personas 
   -Filtrotest se encarga como su nombre indica de comprobar que el filtro de habitaciones por días, presupuesto y numero de personas, funciona.
-  
+  -FiltroHotelTest 
 
-El programa ha sido desarrollado en java con eclipse IDE 2020-06.
+El programa ha sido desarrollado en java con eclipse IDE 2020-06. 
+Se han implementado librerias de google cloud 
 
-Por falta de conocimiento y tiempo no se ha llegado a implementar el FiltroHotelTest que se encargaría de encontrar los hoteles que disponen de habitaciones adecuadas, sacándolos de un vector del conjunto, a uno auxiliar y luego mostrándolos. Sin embargo se hace uso de esta función en el programa y es la principal, puesto que esta enlazada con el resto y dirije que usar y cuando.
+
+
 
 Práctica creada por Mateo Orive
