@@ -28,13 +28,21 @@ Agradecimientos:
   
  Otras referencias que han ayudado en la investigación de como implementar la interfaz multilenguaje han sido:
  -https://developers.google.com/apps-script/reference/language/language-app
+ 
  -https://www.discoduroderoer.es/como-hacer-una-aplicacion-multi-idioma-en-java/
+ 
  -https://java.dokry.com/58429/cuales-son-las-mejores-practicas-para-la-api-de-middleware.html
+ 
  -https://code.google.com/archive/p/java-google-translate-text-to-speech/
+ 
  -https://github.com/jrichardsz/lib-java-google-translate-text-to-speech
+ 
  -https://java.dokry.com/3032/como-usar-google-translate-api-en-mi-aplicacion-java.html
+ 
  -https://cloud.google.com/translate/docs/setup?hl=es#windows
+ 
  -https://www.programmersought.com/article/96325538810/
+ 
  
 
 
