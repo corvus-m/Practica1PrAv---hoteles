@@ -3,7 +3,7 @@ TriLazy
 Este programa desarrollado en java se encarga de buscar todos los hoteles en los que puedes alojarte, teniendo en cuenta fechas, número de personas y presupuesto, además de calcularte precios y descuentos según las condiciones. Tras encontrar estos te detallará sus instalaciones y las habitaciones que tiene disponibles para ti.
 
 La clase Traductor no es mas que una llamada a una funcion implementada en Google Apps Script, esta usa el traductor de google para traducir la frase introducida al idioma deseado.
-![imagen]traductor.jpeg
+![imagen](https://github.com/corvus-m/Practica1PrAv/blob/master/traductor.jpeg)
 
 Para su utilización tiene preparadas funciones para insertar los detalles de los hoteles que se desean promocionar.
 
