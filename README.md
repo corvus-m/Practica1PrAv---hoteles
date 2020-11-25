@@ -13,7 +13,7 @@ Durante las ultimas semanas se ha evaluado la situación del proyecto y se han d
 
 
 
-Para su utilización tiene preparadas funciones para insertar los detalles de los hoteles que se desean promocionar.
+Para su utilización, este programa tiene preparadas funciones para insertar los detalles de los hoteles que se desean promocionar.
 
 Además ahora el proyecto cuenta con una interfaz en 100 idiomas gracias a la google apps script.
 La clase Traductor no es mas que una llamada a una funcion implementada en Google Apps Script, esta usa la clase [LanguageApp](https://developers.google.com/apps-script/reference/language/language-app) de google para traducir la frase introducida al idioma deseado.
