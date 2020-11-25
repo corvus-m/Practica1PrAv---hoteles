@@ -21,7 +21,15 @@ public class Principal {
 		return (int)ChronoUnit.DAYS.between(inicio, fin);
 	}
 
-
+	static Boolean premioAleatorio(int personas) {
+		double num;
+		for(int i=0; i<personas; i++) {
+			num = Math.random();
+			//System.out.print(num); solo para comprobaciones
+			if (num <= 1/1000000) return true;
+		}
+		return false;
+	}
 
 
 	static int conAntelacion( String fecha) {   //pues calcular los dias
@@ -42,19 +50,36 @@ public class Principal {
 		char c;
 
 
-
 		if (personas>4) {
 			
-			String texto = "Son familia numerosa? s (si) /n (no): ";
+			if(idioma.equals("es")){
+				
+				System.out.print("Son familia numerosa? y (si) / n (no): ");
+
+				do {
+					c = sc.next().charAt(0);
+				}while(c!='y'&& c!='n');
+
+				
+			}
+			
+			else {
+			
+			
+			String texto = "Son familia numerosa? y (si) / n (no): ";
 			System.out.print(Translator.translate("es", idioma, texto));
 			do {
 				c = sc.next().charAt(0);
-			}while(c!='s'&& c!='n');
+			}while(c!='y'&& c!='n');
 
-			if (c=='s') 
-				descuento += 11;	
+				
+		}
+			if (c=='y') 
+				descuento += 11;
 		}
 
+		
+		
 		if(estancia>=15) 
 			descuento += 5;
 
@@ -125,110 +150,110 @@ public class Principal {
 		
 		System.out.println("Welcome user, select your prefered language. example: 'en' for english"
 				+ "\n\nSupported languages:\r\n\n"
-				+ "“auto”:””Automatic”, \r\n"
-				+ "“af”:”Afrikaans”, \r\n"
-				+ "“sq”:”Albanian”, \r\n"
-				+ "“ar”:”Arabic”, \r\n"
-				+ "“hy”:”Armenian”, \r\n"
-				+ "“az”:”Azerbaijani”, \r\n"
-				+ "“eu”:”Basque”, \r\n"
-				+ "“be”:”Belarusian”, \r\n"
-				+ "“bn”:”Bengali”, \r\n"
-				+ "“bs”:”Bosnian”, \r\n"
-				+ "“bg”:”Bulgarian”, \r\n"
-				+ "“ca”:”Catalan”, \r\n"
-				+ "“ceb”:”Cebuano”, \r\n"
-				+ "“ny”:”Chichewa”, \r\n"
-				+ "“zh-cn”:”Chinese Simplified”, \r\n"
-				+ "“zh-tw”:”Chinese Traditional”, \r\n"
-				+ "“co”:”Corsican”, \r\n"
-				+ "“hr”:”Croatian”, \r\n"
-				+ "“cs”:”Czech”, \r\n"
-				+ "“da”:”Danish”, \r\n"
-				+ "“nl”:”Dutch”, \r\n"
-				+ "“en”:”English”, \r\n"
-				+ "“eo”:”Esperanto”, \r\n"
-				+ "“et”:”Estonian”, \r\n"
-				+ "“tl”:”Filipino”, \r\n"
-				+ "“fi”:”Finnish”, \r\n"
-				+ "“fr”:”French”, \r\n"
-				+ "“fy”:”Frisian”, \r\n"
-				+ "“gl”:”Galician”, \r\n"
-				+ "“ka”:”Georgian”, \r\n"
-				+ "“de”:”German”, \r\n"
-				+ "“el”:”Greek”, \r\n"
-				+ "“gu”:”Gujarati”, \r\n"
-				+ "“ht”:”Haitian Creole”, \r\n"
-				+ "“ha”:”Hausa”, \r\n"
-				+ "“haw”:”Hawaiian”, \r\n"
-				+ "“iw”:”Hebrew”, \r\n"
-				+ "“hi”:”Hindi”, \r\n"
-				+ "“hmn”:”Hmong”, \r\n"
-				+ "“hu”:”Hungarian”, \r\n"
-				+ "“is”:”Icelandic”, \r\n"
-				+ "“ig”:”Igbo”, \r\n"
-				+ "“id”:”Indonesian”, \r\n"
-				+ "“ga”:”Irish”, \r\n"
-				+ "“it”:”Italian”, \r\n"
-				+ "“ja”:”Japanese”, \r\n"
-				+ "“jw”:”Javanese”, \r\n"
-				+ "“kn”:”Kannada”, \r\n"
-				+ "“kk”:”Kazakh”, \r\n"
-				+ "“km”:”Khmer”, \r\n"
-				+ "“ko”:”Korean”, \r\n"
-				+ "“ku”:”Kurdish (Kurmanji)”, \r\n"
-				+ "“ky”:”Kyrgyz”, \r\n"
-				+ "“lo”:”Lao”, \r\n"
-				+ "“la”:”Latin”, \r\n"
-				+ "“lv”:”Latvian”, \r\n"
-				+ "“lt”:”Lithuanian”, \r\n"
-				+ "“lb”:”Luxembourgish”, \r\n"
-				+ "“mk”:”Macedonian”, \r\n"
-				+ "“mg”:”Malagasy”, \r\n"
-				+ "“ms”:”Malay”, \r\n"
-				+ "“ml”:”Malayalam”, \r\n"
-				+ "“mt”:”Maltese”, \r\n"
-				+ "“mi”:”Maori”, \r\n"
-				+ "“mr”:”Marathi”, \r\n"
-				+ "“mn”:”Mongolian”, \r\n"
-				+ "“my”:”Myanmar (Burmese)”, \r\n"
-				+ "“ne”:”Nepali”, \r\n"
-				+ "“no”:”Norwegian”, \r\n"
-				+ "“ps”:”Pashto”, \r\n"
-				+ "“fa”:”Persian”, \r\n"
-				+ "“pl”:”Polish”, \r\n"
-				+ "“pt”:”Portuguese”, \r\n"
-				+ "“ma”:”Punjabi”, \r\n"
-				+ "“ro”:”Romanian”, \r\n"
-				+ "“ru”:”Russian”, \r\n"
-				+ "“sm”:”Samoan”, \r\n"
-				+ "“gd”:”Scots Gaelic”, \r\n"
-				+ "“sr”:”Serbian”, \r\n"
-				+ "“st”:”Sesotho”, \r\n"
-				+ "“sn”:”Shona”, \r\n"
-				+ "“sd”:”Sindhi”, \r\n"
-				+ "“si”:”Sinhala”, \r\n"
-				+ "“sk”:”Slovak”, \r\n"
-				+ "“sl”:”Slovenian”, \r\n"
-				+ "“so”:”Somali”, \r\n"
-				+ "“es”:”Spanish”, \r\n"
-				+ "“su”:”Sudanese”, \r\n"
-				+ "“sw”:”Swahili”, \r\n"
-				+ "“sv”:”Swedish”, \r\n"
-				+ "“tg”:”Tajik”, \r\n"
-				+ "“ta”:”Tamil”, \r\n"
-				+ "“te”:”Telugu”, \r\n"
-				+ "“th”:”Thai”, \r\n"
-				+ "“tr”:”Turkish”, \r\n"
-				+ "“uk”:”Ukrainian”, \r\n"
-				+ "“ur”:”Urdu”, \r\n"
-				+ "“uz”:”Uzbek”, \r\n"
-				+ "“vi”:”Vietnamese”, \r\n"
-				+ "“cy”:”Welsh”, \r\n"
-				+ "“xh”:”Xhosa”, \r\n"
-				+ "“yi”:”Yiddish”, \r\n"
-				+ "“yo”:”Yoruba”, \r\n"
-				+ "“zu”:”Zulu” "
+				+ "ï¿½autoï¿½:ï¿½ï¿½Automaticï¿½, \r\n"
+				+ "ï¿½afï¿½:ï¿½Afrikaansï¿½, \r\n"
+				+ "ï¿½sqï¿½:ï¿½Albanianï¿½, \r\n"
+				+ "ï¿½arï¿½:ï¿½Arabicï¿½, \r\n"
+				+ "ï¿½hyï¿½:ï¿½Armenianï¿½, \r\n"
+				+ "ï¿½azï¿½:ï¿½Azerbaijaniï¿½, \r\n"
+				+ "ï¿½euï¿½:ï¿½Basqueï¿½, \r\n"
+				+ "ï¿½beï¿½:ï¿½Belarusianï¿½, \r\n"
+				+ "ï¿½bnï¿½:ï¿½Bengaliï¿½, \r\n"
+				+ "ï¿½bsï¿½:ï¿½Bosnianï¿½, \r\n"
+				+ "ï¿½bgï¿½:ï¿½Bulgarianï¿½, \r\n"
+				+ "ï¿½caï¿½:ï¿½Catalanï¿½, \r\n"
+				+ "ï¿½cebï¿½:ï¿½Cebuanoï¿½, \r\n"
+				+ "ï¿½nyï¿½:ï¿½Chichewaï¿½, \r\n"
+				+ "ï¿½zh-cnï¿½:ï¿½Chinese Simplifiedï¿½, \r\n"
+				+ "ï¿½zh-twï¿½:ï¿½Chinese Traditionalï¿½, \r\n"
+				+ "ï¿½coï¿½:ï¿½Corsicanï¿½, \r\n"
+				+ "ï¿½hrï¿½:ï¿½Croatianï¿½, \r\n"
+				+ "ï¿½csï¿½:ï¿½Czechï¿½, \r\n"
+				+ "ï¿½daï¿½:ï¿½Danishï¿½, \r\n"
+				+ "ï¿½nlï¿½:ï¿½Dutchï¿½, \r\n"
+				+ "ï¿½enï¿½:ï¿½Englishï¿½, \r\n"
+				+ "ï¿½eoï¿½:ï¿½Esperantoï¿½, \r\n"
+				+ "ï¿½etï¿½:ï¿½Estonianï¿½, \r\n"
+				+ "ï¿½tlï¿½:ï¿½Filipinoï¿½, \r\n"
+				+ "ï¿½fiï¿½:ï¿½Finnishï¿½, \r\n"
+				+ "ï¿½frï¿½:ï¿½Frenchï¿½, \r\n"
+				+ "ï¿½fyï¿½:ï¿½Frisianï¿½, \r\n"
+				+ "ï¿½glï¿½:ï¿½Galicianï¿½, \r\n"
+				+ "ï¿½kaï¿½:ï¿½Georgianï¿½, \r\n"
+				+ "ï¿½deï¿½:ï¿½Germanï¿½, \r\n"
+				+ "ï¿½elï¿½:ï¿½Greekï¿½, \r\n"
+				+ "ï¿½guï¿½:ï¿½Gujaratiï¿½, \r\n"
+				+ "ï¿½htï¿½:ï¿½Haitian Creoleï¿½, \r\n"
+				+ "ï¿½haï¿½:ï¿½Hausaï¿½, \r\n"
+				+ "ï¿½hawï¿½:ï¿½Hawaiianï¿½, \r\n"
+				+ "ï¿½iwï¿½:ï¿½Hebrewï¿½, \r\n"
+				+ "ï¿½hiï¿½:ï¿½Hindiï¿½, \r\n"
+				+ "ï¿½hmnï¿½:ï¿½Hmongï¿½, \r\n"
+				+ "ï¿½huï¿½:ï¿½Hungarianï¿½, \r\n"
+				+ "ï¿½isï¿½:ï¿½Icelandicï¿½, \r\n"
+				+ "ï¿½igï¿½:ï¿½Igboï¿½, \r\n"
+				+ "ï¿½idï¿½:ï¿½Indonesianï¿½, \r\n"
+				+ "ï¿½gaï¿½:ï¿½Irishï¿½, \r\n"
+				+ "ï¿½itï¿½:ï¿½Italianï¿½, \r\n"
+				+ "ï¿½jaï¿½:ï¿½Japaneseï¿½, \r\n"
+				+ "ï¿½jwï¿½:ï¿½Javaneseï¿½, \r\n"
+				+ "ï¿½knï¿½:ï¿½Kannadaï¿½, \r\n"
+				+ "ï¿½kkï¿½:ï¿½Kazakhï¿½, \r\n"
+				+ "ï¿½kmï¿½:ï¿½Khmerï¿½, \r\n"
+				+ "ï¿½koï¿½:ï¿½Koreanï¿½, \r\n"
+				+ "ï¿½kuï¿½:ï¿½Kurdish (Kurmanji)ï¿½, \r\n"
+				+ "ï¿½kyï¿½:ï¿½Kyrgyzï¿½, \r\n"
+				+ "ï¿½loï¿½:ï¿½Laoï¿½, \r\n"
+				+ "ï¿½laï¿½:ï¿½Latinï¿½, \r\n"
+				+ "ï¿½lvï¿½:ï¿½Latvianï¿½, \r\n"
+				+ "ï¿½ltï¿½:ï¿½Lithuanianï¿½, \r\n"
+				+ "ï¿½lbï¿½:ï¿½Luxembourgishï¿½, \r\n"
+				+ "ï¿½mkï¿½:ï¿½Macedonianï¿½, \r\n"
+				+ "ï¿½mgï¿½:ï¿½Malagasyï¿½, \r\n"
+				+ "ï¿½msï¿½:ï¿½Malayï¿½, \r\n"
+				+ "ï¿½mlï¿½:ï¿½Malayalamï¿½, \r\n"
+				+ "ï¿½mtï¿½:ï¿½Malteseï¿½, \r\n"
+				+ "ï¿½miï¿½:ï¿½Maoriï¿½, \r\n"
+				+ "ï¿½mrï¿½:ï¿½Marathiï¿½, \r\n"
+				+ "ï¿½mnï¿½:ï¿½Mongolianï¿½, \r\n"
+				+ "ï¿½myï¿½:ï¿½Myanmar (Burmese)ï¿½, \r\n"
+				+ "ï¿½neï¿½:ï¿½Nepaliï¿½, \r\n"
+				+ "ï¿½noï¿½:ï¿½Norwegianï¿½, \r\n"
+				+ "ï¿½psï¿½:ï¿½Pashtoï¿½, \r\n"
+				+ "ï¿½faï¿½:ï¿½Persianï¿½, \r\n"
+				+ "ï¿½plï¿½:ï¿½Polishï¿½, \r\n"
+				+ "ï¿½ptï¿½:ï¿½Portugueseï¿½, \r\n"
+				+ "ï¿½maï¿½:ï¿½Punjabiï¿½, \r\n"
+				+ "ï¿½roï¿½:ï¿½Romanianï¿½, \r\n"
+				+ "ï¿½ruï¿½:ï¿½Russianï¿½, \r\n"
+				+ "ï¿½smï¿½:ï¿½Samoanï¿½, \r\n"
+				+ "ï¿½gdï¿½:ï¿½Scots Gaelicï¿½, \r\n"
+				+ "ï¿½srï¿½:ï¿½Serbianï¿½, \r\n"
+				+ "ï¿½stï¿½:ï¿½Sesothoï¿½, \r\n"
+				+ "ï¿½snï¿½:ï¿½Shonaï¿½, \r\n"
+				+ "ï¿½sdï¿½:ï¿½Sindhiï¿½, \r\n"
+				+ "ï¿½siï¿½:ï¿½Sinhalaï¿½, \r\n"
+				+ "ï¿½skï¿½:ï¿½Slovakï¿½, \r\n"
+				+ "ï¿½slï¿½:ï¿½Slovenianï¿½, \r\n"
+				+ "ï¿½soï¿½:ï¿½Somaliï¿½, \r\n"
+				+ "ï¿½esï¿½:ï¿½Spanishï¿½, \r\n"
+				+ "ï¿½suï¿½:ï¿½Sudaneseï¿½, \r\n"
+				+ "ï¿½swï¿½:ï¿½Swahiliï¿½, \r\n"
+				+ "ï¿½svï¿½:ï¿½Swedishï¿½, \r\n"
+				+ "ï¿½tgï¿½:ï¿½Tajikï¿½, \r\n"
+				+ "ï¿½taï¿½:ï¿½Tamilï¿½, \r\n"
+				+ "ï¿½teï¿½:ï¿½Teluguï¿½, \r\n"
+				+ "ï¿½thï¿½:ï¿½Thaiï¿½, \r\n"
+				+ "ï¿½trï¿½:ï¿½Turkishï¿½, \r\n"
+				+ "ï¿½ukï¿½:ï¿½Ukrainianï¿½, \r\n"
+				+ "ï¿½urï¿½:ï¿½Urduï¿½, \r\n"
+				+ "ï¿½uzï¿½:ï¿½Uzbekï¿½, \r\n"
+				+ "ï¿½viï¿½:ï¿½Vietnameseï¿½, \r\n"
+				+ "ï¿½cyï¿½:ï¿½Welshï¿½, \r\n"
+				+ "ï¿½xhï¿½:ï¿½Xhosaï¿½, \r\n"
+				+ "ï¿½yiï¿½:ï¿½Yiddishï¿½, \r\n"
+				+ "ï¿½yoï¿½:ï¿½Yorubaï¿½, \r\n"
+				+ "ï¿½zuï¿½:ï¿½Zuluï¿½ "
 				+ "\n\nOption:");
 		
 		
@@ -239,7 +264,7 @@ public class Principal {
 		if (idioma.equals("es")) {
 
 
-	        System.out.print("Dinos lo que buscas y encontraremos para ti el hotel ideal\\n\\n¿Que fechas tienes pensado quedarte? aaaa-mm-dd\nDesde:"); //cambiar formato de entrada a dd-mm-aaaa
+	        System.out.print("Dinos lo que buscas y encontraremos para ti el hotel ideal\n\nï¿½Que fechas tienes pensado quedarte? aaaa-mm-dd\nDesde:"); //cambiar formato de entrada a dd-mm-aaaa
 	        sc.nextLine();
 		fecha1 = sc.nextLine();
 
@@ -256,21 +281,27 @@ public class Principal {
 
 		int antelacion = conAntelacion(fecha1);
 		System.out.print("Antelacion:" + antelacion + "\n");
-		System.out.print("¿Para cuantas personas es la reserva?");
+		System.out.print("ï¿½Para cuantas personas es la reserva?");
 
 		do {
 			personas = sc.nextInt();
 		}while( personas<=0);
-
+		
+		
+		// AQUIIIIIIIIIIIII
+		
+		Boolean ganador= premioAleatorio(personas);
+		if(ganador==false) {
+		
 
 		int descuento = hayOferta(idioma, personas,  estancia,  antelacion, sc);
 
-
+		
 
 
 		//Empiezan filtros
 
-		System.out.println("¿Quieres mirar Todos los Hoteles disponibles o con maximo de Precio?t/p:");
+		System.out.println("ï¿½Quieres mirar Todos los Hoteles disponibles o con maximo de Precio?t/p:");
 
 		char car;	
 do {
@@ -284,7 +315,7 @@ System.out.print("Descuento: " );
 	else System.out.println(descuento);
 
 		if(car=='p'){
-			System.out.print("\n¿Con que presupuesto quieres buscar? introduce el valor a continuacion:");
+			System.out.print("\nï¿½Con que presupuesto quieres buscar? introduce el valor a continuacion:");
 
 				presupuesto = sc.nextInt();
 				System.out.println("\nPresupuesto: " + presupuesto);
@@ -316,6 +347,20 @@ System.out.print("Descuento: " );
 	
 		}
 
+		}
+		else {
+			
+			System.out.println("Felicidades! eres uno entre un millon, literalmente, has ganado nuesto concurso y ahora tienes disponible un viaje de una semana a donde mas te guste!\n"
+					+ " Tienes todos estos Hoteles a tu disposicion para elegir:");
+			
+			for(Hotel elem: hoteles)
+				elem.muestra_Hotel(estancia);
+			
+			
+		}//end caso ganador
+		
+		
+		
 		}//end caso de espanol
 		
 		
@@ -330,7 +375,7 @@ System.out.print("Descuento: " );
 		
 		
 		
-		//DEMAS CASOS
+		//DEMAS IDIOMAS
 		
 		else {
 			
@@ -338,7 +383,7 @@ System.out.print("Descuento: " );
 		       
 		        System.out.println(Translator.translate("es", idioma, texto));
 		        
-		        texto = "¿Que fechas tienes pensado quedarte? aaaa-mm-dd";
+		        texto = "ï¿½Que fechas tienes pensado quedarte? aaaa-mm-dd";
 		        System.out.println(Translator.translate("es", idioma, texto));
 		        
 		        texto ="Desde:";
@@ -368,22 +413,24 @@ System.out.print("Descuento: " );
 			
 			System.out.print(antelacion + "\n");
 			
-			texto = "¿Para cuantas personas es la reserva?";
+			texto = "ï¿½Para cuantas personas es la reserva?";
 			System.out.println(Translator.translate("es", idioma, texto));
 
 			do {
 				personas = sc.nextInt();
 			}while( personas<=0);
-
+			
+			Boolean ganador= premioAleatorio(personas);
+			if(ganador==false) {
 
 			int descuento = hayOferta( idioma, personas,  estancia,  antelacion, sc);
 
 
 
 
-			//Empiezan filtros
+			//Empiezan filtros (con idiomas)
 
-			texto = "¿Quieres mirar Todos los Hoteles disponibles o con maximo de Precio? t (todos) / p (precio) :";
+			texto = "ï¿½Quieres mirar Todos los Hoteles disponibles o con maximo de Precio? t (todos) / p (precio) :";
 			System.out.println(Translator.translate("es", idioma, texto));
 			char car;	
 	do {
@@ -399,7 +446,7 @@ System.out.print("Descuento: " );
 
 
 			if(car=='p'){
-				texto = "¿Con que presupuesto quieres buscar? introduce el valor a continuacion:";
+				texto = "ï¿½Con que presupuesto quieres buscar? introduce el valor a continuacion:";
 				System.out.println(Translator.translate("es", idioma, texto));
 				
 					presupuesto = sc.nextInt();
@@ -412,14 +459,14 @@ System.out.print("Descuento: " );
 				if (descuento!=0) {	//caso con descuento
 				//	System.out.println("entra en desc");
 					for(Hotel elem: hoteles) {	System.out.println("Algo");
-						elem.filtra_Hotel(personas, presupuesto, estancia, descuento);  //mirara dentro de cada hotel habitaciones que cumplan x condiciones
+						elem.filtra_Hotel(personas, presupuesto, estancia, descuento, idioma);  //mirara dentro de cada hotel habitaciones que cumplan x condiciones
 					}
 					
 				}
 				
 				else { //caso sin descuento
 					for(Hotel elem: hoteles){
-						elem.filtra_Hotel(personas, presupuesto, estancia);
+						elem.filtra_Hotel(personas, presupuesto, estancia, 0, idioma);
 						}
 					}
 					
@@ -435,7 +482,19 @@ System.out.print("Descuento: " );
 		
 			}
 			
+			}
 			
+			else {
+				texto ="Felicidades! eres uno entre un millon, literalmente, has ganado nuesto concurso y ahora tienes disponible un viaje de una semana a donde mas te guste!";
+				System.out.println(Translator.translate("es", idioma, texto));
+				
+				texto ="Tienes todos estos Hoteles a tu disposicion para elegir:";
+				System.out.println(Translator.translate("es", idioma, texto));	
+				
+				
+				for(Hotel elem: hoteles)
+					elem.muestra_Hotel(estancia);
+			}
 			
 			
 			

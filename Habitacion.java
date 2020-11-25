@@ -1,17 +1,16 @@
 package triLazy;
 
-public class Habitacion {
+public class Habitacion implements IHabitacion {
 	
-	//private Calendar disponible(){}
+
 	
-	//private valoraciones;			//crear con media de usuarios
 	
 	protected String nom_habi;
 	protected int camas_ind;
 	protected int camas_matrimonio;
 	protected Boolean pisc_incluida;
 	protected Boolean incluye_buffet;
-	protected int estrellas_hotel;		//juro que se lo que es una clase hija pero no me he dado cuenta de su utilidad en este programa hasta muy avanzada la practica
+	protected int estrellas_hotel;		
 	
 	
 	
@@ -40,10 +39,15 @@ public class Habitacion {
 	
 	
 	//metodos
+	public double anadir_valor() {
+		return (this.pisc_incluida || this.incluye_buffet)? ((this.pisc_incluida && this.incluye_buffet)? 3.0 : 1.5) : 0; 
+	}
+	
+	
 	
 	public double calcular_precio() {
 		
-		double aux = (double)(this.getEstrellas_hotel()*4) + (this.getCamas_ind()*(2.0+0.5*this.getEstrellas_hotel())) + (this.getCamas_matrimonio()*(3.0+0.5*this.getEstrellas_hotel()));
+		double aux = (double)(this.getEstrellas_hotel()*4) + (this.getCamas_ind()*(2.0+0.5*this.getEstrellas_hotel())) + (this.getCamas_matrimonio()*(3.0+0.5*this.getEstrellas_hotel()) + this.anadir_valor());
 		
 		 return aux;
 		
@@ -66,7 +70,6 @@ public class Habitacion {
 			return true;
 		
 		return false;
-
 	}
 	
 												//hacer privado y sacar sus public?

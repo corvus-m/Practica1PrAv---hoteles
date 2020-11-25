@@ -1,6 +1,7 @@
 package triLazy;
 
 
+import java.io.IOException;
 import java.util.Vector;
 
 
@@ -187,6 +188,36 @@ public class Hotel {				//es o no es como trivago
 		return cont;
 	}
 
+	public int filtra_Hotel( int personas, int precio, int dias, int descuento, String idioma) throws IOException {
+		Vector<Habitacion> aux = new Vector<Habitacion>();
+		int cont=0;
+		String texto;
+		for(Habitacion elem: this.getHabitaciones())
+			if(elem.filtra_habitacion(personas, precio, dias, descuento)) {
+				aux.add(elem);
+				cont++;
+			}
+		if(cont!=0) {
+			
+			texto ="El Hotel ";
+			System.out.print(Translator.translate("es", idioma, texto));
+			
+			System.out.print(this.getNombre());
+			
+			texto =" dispone de estas caracteristicas: ";
+			System.out.println(Translator.translate("es", idioma, texto));
+			
+
+			this.caracteristicas_Hotel();
+
+			texto = "Ademas de estas habitaciones.";
+			System.out.println(Translator.translate("es", idioma, texto));
+			
+			for(Habitacion elem: aux)
+				elem.muestra_habitacion(dias, descuento);
+		}
+		return cont;
+	}
 
 
 
