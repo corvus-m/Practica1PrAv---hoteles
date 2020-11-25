@@ -3,7 +3,7 @@ TriLazy
 Este programa desarrollado en java se encarga de buscar todos los hoteles en los que puedes alojarte, teniendo en cuenta fechas, número de personas y presupuesto, además de calcularte precios y descuentos según las condiciones. Tras encontrar estos te detallará sus instalaciones y las habitaciones que tiene disponibles para ti.
 
 
-![imagen](https://github.com/corvus-m/Practica1PrAv/blob/master/Diagrama clases.vpd (1).jpg)
+![imagen](https://github.com/corvus-m/Practica1PrAv/blob/master/Diagramaclases.jpg)
 
 
 
