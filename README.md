@@ -3,7 +3,13 @@ TriLazy
 Este programa desarrollado en java se encarga de buscar todos los hoteles en los que puedes alojarte, teniendo en cuenta fechas, número de personas y presupuesto, además de calcularte precios y descuentos según las condiciones. Tras encontrar estos te detallará sus instalaciones y las habitaciones que tiene disponibles para ti.
 
 
+Durante las ultimas semanas se ha evaluado la situación del proyecto y se han decidido llevar a cabo cambios en su orientación. pensando en la posibilidad de detallar mas tipos de habitacion y asi dar un mejor soporte y detallar caracteristicas de estas se ha decidido implementar una interfaz habitación, por ello se ha tenido que estender a los tipos ya usados, necesitando con ello una refactorización de codigo. En aras de una correcta implementacion, se ha sacrificado encapsulamiento de los metodos protegidos de habitacion, siendo ahora publicos para pertenecer a la nueva IHabitacion. Se prevé implementar asi mismo una interfaz para hoteles, facilitando la creacion de nuevas clases hotel, que nos permitan llegar a nuevos negocios familiares o menos tradicionales que antes no se vieran bien representados. Por todo esto se ha rediseñado el diagrama de clases para sacar mas provecho a nuestro proyecto, cambiando desde el codigo nuestro modelo de negocio para hacerlo mas escalable.
+
+
 ![imagen](https://github.com/corvus-m/Practica1PrAv/blob/master/Diagramaclases.jpg)
+
+
+
 
 
 
