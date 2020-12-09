@@ -20,6 +20,8 @@ La clase Traductor no es mas que una llamada a una funcion implementada en Googl
 ![imagen](https://github.com/corvus-m/Practica1PrAv/blob/master/traductor.jpeg)
 Se prevee implementar esta traduccion en los detalles de los hoteles y sus habitaciones asi como en el resto del programa.
 
+Hemos agregado un login para usuarios. Nuestra prioridad es su seguridad, por eso hemos añadido una base de datos donde guardar la información codificada de forma que no se pueda acceder a ella sin conocimiento de la clave. Ahora mismo se trata de un prototipo y solo cuenta con una seguridad simetrica, pero se prevee implementar encriptacion asimetrica en las proximas versiones.mm
+
 Los distintos test se encargan de comprobar el correcto funcionamiento de las funciones del programa:
   -Datetest comprueba que las funciones de estancia y reserva de dias funcionan correctamente, dando los dias que hay entre dos fechas.
   -DistributionTest mira que la función distribución de personas, filtra correctamente las habitaciones disponibles para X personas 
