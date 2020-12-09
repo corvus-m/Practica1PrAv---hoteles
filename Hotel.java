@@ -21,7 +21,8 @@ public class Hotel {				//es o no es como trivago
 	protected Boolean bar;
 
 	protected Vector<Habitacion> habitaciones;
-
+	
+	protected Vector<DatosGene> datosHotel;	//si quisiera ponerlo como Vector<DatosGene<T>> la clase Hotel requeriria de ser Hotel<T>
 
 
 
@@ -38,10 +39,24 @@ public class Hotel {				//es o no es como trivago
 		
 		this.habitaciones = new Vector<Habitacion>();
 
+		this.datosHotel = new Vector<DatosGene>();
 	}
 
 
+	public Hotel(String nombre, int estrellas, String direccion, Vector<DatosGene> datos) {
+		this.nombre=nombre;
+		this.estrellas=estrellas;
+		this.direccion=direccion;
+		this.num_habit=0;
+		this.piscina=false;
+		this.pista_tennis=false;
+		this.restaurante=false;
+		this.bar=false;
+		
+		this.habitaciones = new Vector<Habitacion>();
 
+		this.datosHotel = datos;
+	}
 
 
 
@@ -121,8 +136,14 @@ public class Hotel {				//es o no es como trivago
 		this.habitaciones.add(nueva);
 	}
 
+	public void addDato( DatosGene dato) {
+		this.datosHotel.addElement(dato);
 
+	}
+	public void removeServicio( DatosGene dato) {	//se hace mas tedioso insertar datos, pero esto te permite que el vector sea de tipo generico y guarde todo tipo de datos.
+		this.datosHotel.removeElement(dato);
 
+	}
 
 
 

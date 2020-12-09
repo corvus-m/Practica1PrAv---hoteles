@@ -39,7 +39,7 @@ public class Habitacion implements IHabitacion {
 	
 	
 	//metodos
-	public double anadir_valor() {
+	public double anadir_valor() {	//ya no es protected por la refactorizacion necesaria para una buena interfaz
 		return (this.pisc_incluida || this.incluye_buffet)? ((this.pisc_incluida && this.incluye_buffet)? 3.0 : 1.5) : 0; 
 	}
 	
